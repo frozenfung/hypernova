@@ -1,5 +1,6 @@
 import cluster from 'cluster';
 import express from 'express';
+import dotenv from 'dotenv';
 
 import './environment';
 import Module from './Module';
@@ -24,6 +25,7 @@ const defaultConfig = {
 };
 
 export default function hypernova(userConfig, onServer) {
+  dotenv.config();
   const config = Object.assign({}, defaultConfig, userConfig);
 
   if (typeof config.getComponent !== 'function') {
